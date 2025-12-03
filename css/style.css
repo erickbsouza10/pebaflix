@@ -366,8 +366,8 @@ h1 {
 }
 
 .modal-capa {
-    width: 100%;
-    height: auto;
+    width: 200px;
+    height: 200px;
     border-radius: 6px;
     object-fit: cover;
 }
