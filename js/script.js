@@ -3,7 +3,7 @@ const containerPerfis = document.querySelector(".container");
 const mainContent = document.querySelector(".main-content");
 const nomePerfilTela = document.querySelector("#profileName");
 
-// ================== ENTRAR NO PERFIL ==================
+
 function enterProfile(nome) {
     nomePerfilTela.textContent = nome;
 
@@ -28,7 +28,7 @@ function enterProfile(nome) {
     }, 600);
 }
 
-// ================== PERFIS ==================
+
 function renderPerfis() {
     profilesContainer.innerHTML = "";
 
@@ -56,7 +56,7 @@ function renderPerfis() {
     profilesContainer.appendChild(add);
 }
 
-// ================== CATALOGO ==================
+
 function renderCatalogo() {
     console.log("Renderizando catálogo...");
 
@@ -85,7 +85,6 @@ function renderCatalogo() {
     });
 }
 
-// ================== MODAL ==================
 const modal = document.getElementById("modalFilme");
 const modalTitulo = document.querySelector(".modal-titulo");
 const modalCapa = document.querySelector(".modal-capa");
@@ -108,7 +107,7 @@ modal.addEventListener("click", (e) => {
     if (e.target === modal) fecharModalFilme();
 });
 
-// ================== INICIALIZAÇÃO ==================
+
 document.addEventListener("DOMContentLoaded", () => {
     renderPerfis();
 });
