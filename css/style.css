@@ -7,37 +7,46 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .container {
     text-align: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 h1 {
-    font-size: 48px;
+    font-size: clamp(32px, 5vw, 48px);
     margin-bottom: 50px;
 }
 
 .profiles {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 20px;
     flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .profile {
     width: 140px;
+    max-width: 40vw;
     cursor: pointer;
     transition: .2s ease;
 }
 
 .profile img,
 .profile.add {
-    width: 140px;
-    height: 140px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
     border-radius: 5px;
     background: #333;
+    object-fit: cover;
 }
 
 .profile:hover img,
@@ -61,7 +70,7 @@ h1 {
 }
 
 .plus {
-    font-size: 60px;
+    font-size: clamp(40px, 10vw, 60px);
     font-weight: 300;
 }
 
@@ -90,6 +99,8 @@ h1 {
     pointer-events: none;
     position: absolute;
     width: 100%;
+    height: 0;
+    overflow: hidden;
 }
 
 .fade-in {
@@ -122,23 +133,18 @@ h1 {
     }
 }
 
-
-/* ================== STREAMING UI ================== */
-
 .main-content {
-    height: 100%;
     width: 100%;
     display: block;
+    min-height: 100vh;
 }
-
-
-/* NAVBAR */
 
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 20px 50px;
+    padding: 20px 5vw;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -147,9 +153,14 @@ h1 {
 }
 
 .logo {
-    font-size: 28px;
+    font-size: clamp(20px, 4vw, 28px);
     color: #e50914;
     font-weight: bold;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
 }
 
 .navbar nav a {
@@ -157,6 +168,7 @@ h1 {
     text-decoration: none;
     color: #ddd;
     font-size: 14px;
+    transition: .2s;
 }
 
 .navbar nav a:hover {
@@ -171,20 +183,19 @@ h1 {
 
 .profile-icon {
     width: 35px;
+    height: 35px;
     border-radius: 4px;
     cursor: pointer;
+    object-fit: cover;
 }
-
-
-/* HERO BANNER */
 
 .hero {
     position: relative;
-    height: 80vh;
+    height: 70vh;
+    min-height: 400px;
     width: 100%;
     display: flex;
     align-items: center;
-    color: #fff;
 }
 
 .hero-bg {
@@ -192,8 +203,7 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
-    /* Foca no topo da imagem */
+    object-position: center 20%;
     top: 0;
     left: 0;
     z-index: -2;
@@ -208,8 +218,11 @@ h1 {
 }
 
 .hero-content {
-    margin-left: 60px;
+    margin-left: 5vw;
+    width: 90%;
     max-width: 500px;
+    padding-right: 20px;
+    box-sizing: border-box;
 }
 
 .hero-content h3 {
@@ -220,15 +233,16 @@ h1 {
 }
 
 .hero-content h1 {
-    font-size: 60px;
+    font-size: clamp(32px, 6vw, 60px);
     font-weight: bold;
     margin-bottom: 20px;
-    line-height: 60px;
+    line-height: 1.1;
 }
 
 .hero-buttons {
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 .btn-play,
@@ -239,6 +253,7 @@ h1 {
     cursor: pointer;
     border-radius: 4px;
     font-weight: bold;
+    transition: opacity 0.2s;
 }
 
 .btn-play {
@@ -256,27 +271,27 @@ h1 {
     opacity: .85;
 }
 
-
-/* CARROSSEL */
-
 .carousel {
-    margin-top: -80px;
-    padding: 30px 0 50px;
+    padding: 20px 0 50px;
+    margin-top: -50px;
+    position: relative;
+    z-index: 2;
 }
 
 .carousel h2 {
-    margin-left: 40px;
+    margin-left: 4vw;
     margin-bottom: 15px;
-    font-size: 20px;
+    font-size: clamp(16px, 3vw, 20px);
     font-weight: 600;
 }
 
 .carousel-row {
     display: flex;
     gap: 10px;
-    padding-left: 40px;
+    padding: 0 4vw;
     overflow-x: auto;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
 }
 
 .carousel-row::-webkit-scrollbar {
@@ -290,30 +305,13 @@ h1 {
     object-fit: cover;
     cursor: pointer;
     transition: transform .3s, box-shadow .3s;
+    flex-shrink: 0;
 }
 
 .carousel-row img:hover {
     transform: scale(1.15);
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, .3);
     z-index: 5;
-}
-
-
-/* Responsividade */
-
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 32px;
-        line-height: 35px;
-    }
-    .hero-buttons button {
-        font-size: 14px;
-        padding: 8px 18px;
-    }
-    .carousel-row img {
-        width: 180px;
-        height: 100px;
-    }
 }
 
 .modal {
@@ -322,12 +320,14 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, .8);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2000;
     transition: opacity .3s ease;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .modal.hidden {
@@ -338,15 +338,16 @@ h1 {
 .modal-content {
     background: #181818;
     padding: 20px;
-    width: 80%;
+    width: 100%;
     max-width: 450px;
-    max-height: 85vh;
-    border-radius: 10px;
+    max-height: 90vh;
+    border-radius: 12px;
     text-align: center;
     overflow-y: auto;
     scrollbar-width: none;
     animation: subir .35s ease forwards;
     position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .modal-content::-webkit-scrollbar {
@@ -366,26 +367,78 @@ h1 {
 
 .modal-capa {
     width: 100%;
+    height: auto;
     border-radius: 6px;
-    height: 200px;
-    width: 200px;
+    object-fit: cover;
 }
 
 .modal-titulo {
-    font-size: 26px;
+    font-size: 20px;
     margin: 15px 0 10px;
+    font-weight: bold;
 }
 
 .modal-descricao {
     color: #bebebe;
-    font-size: 15px;
+    font-size: 14px;
+    line-height: 1.5;
     margin-bottom: 20px;
+    padding: 0 10px;
 }
 
 .close-modal {
     position: absolute;
-    top: 20px;
-    right: 25px;
+    top: 10px;
+    right: 15px;
     font-size: 28px;
     cursor: pointer;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 4vw;
+    }
+    .hero {
+        height: 60vh;
+    }
+    .carousel-row img {
+        width: 200px;
+        height: 112px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar nav a {
+        display: none;
+    }
+    .hero-content {
+        margin-left: 4vw;
+    }
+    .hero-buttons {
+        gap: 10px;
+    }
+    .btn-play,
+    .btn-info {
+        padding: 8px 16px;
+        font-size: 14px;
+        flex: 1;
+        text-align: center;
+    }
+    .carousel-row img {
+        width: 160px;
+        height: 90px;
+    }
+    .profiles {
+        gap: 15px;
+    }
+    .profile {
+        width: 45%;
+    }
 }
