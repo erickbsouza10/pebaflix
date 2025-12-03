@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+body {
+    background: #141414;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 50px;
+}
+
+.profiles {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.profile {
+    width: 140px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.profile img,
+.profile.add {
+    width: 140px;
+    height: 140px;
+    border-radius: 5px;
+    background: #333;
+}
+
+.profile:hover img,
+.profile.add:hover {
+    transform: scale(1.08);
+    border: 3px solid #fff;
+}
+
+.profile span {
+    display: block;
+    margin-top: 12px;
+    font-size: 16px;
+    color: #aaa;
+}
+
+.profile.add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.plus {
+    font-size: 60px;
+    font-weight: 300;
+}
+
+.text-add {
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.manage-btn {
+    margin-top: 40px;
+    padding: 10px 25px;
+    background: none;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.manage-btn:hover {
+    border-color: white;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+}
+
+.fade-in {
+    animation: fadeIn .6s ease forwards;
+}
+
+.fade-out {
+    animation: fadeOut .6s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(.95);
+    }
+}
+
+
+/* ================== STREAMING UI ================== */
+
+.main-content {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+    z-index: 10;
+}
+
+.logo {
+    font-size: 28px;
+    color: #e50914;
+    font-weight: bold;
+}
+
+.navbar nav a {
+    margin: 0 12px;
+    text-decoration: none;
+    color: #ddd;
+    font-size: 14px;
+}
+
+.navbar nav a:hover {
+    color: #fff;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-icon {
+    width: 35px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+/* HERO BANNER */
+
+.hero {
+    position: relative;
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.hero-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    /* Foca no topo da imagem */
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+.hero-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #141414, transparent 60%);
+    z-index: -1;
+}
+
+.hero-content {
+    margin-left: 60px;
+    max-width: 500px;
+}
+
+.hero-content h3 {
+    color: #e50914;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.hero-content h1 {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 60px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-play,
+.btn-info {
+    padding: 10px 25px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.btn-play {
+    background: #fff;
+    color: #000;
+}
+
+.btn-info {
+    background: rgba(109, 109, 110, .7);
+    color: #fff;
+}
+
+.btn-play:hover,
+.btn-info:hover {
+    opacity: .85;
+}
+
+
+/* CARROSSEL */
+
+.carousel {
+    margin-top: -80px;
+    padding: 30px 0 50px;
+}
+
+.carousel h2 {
+    margin-left: 40px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.carousel-row {
+    display: flex;
+    gap: 10px;
+    padding-left: 40px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.carousel-row::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-row img {
+    width: 240px;
+    height: 135px;
+    border-radius: 4px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform .3s, box-shadow .3s;
+}
+
+.carousel-row img:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    z-index: 5;
+}
+
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 32px;
+        line-height: 35px;
+    }
+    .hero-buttons button {
+        font-size: 14px;
+        padding: 8px 18px;
+    }
+    .carousel-row img {
+        width: 180px;
+        height: 100px;
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    transition: opacity .3s ease;
+}
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background: #181818;
+    padding: 20px;
+    width: 80%;
+    max-width: 450px;
+    max-height: 85vh;
+    border-radius: 10px;
+    text-align: center;
+    overflow-y: auto;
+    scrollbar-width: none;
+    animation: subir .35s ease forwards;
+    position: relative;
+}
+
+.modal-content::-webkit-scrollbar {
+    display: none;
+}
+
+@keyframes subir {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-capa {
+    width: 100%;
+    border-radius: 6px;
+    height: 200px;
+    width: 200px;
+}
+
+.modal-titulo {
+    font-size: 26px;
+    margin: 15px 0 10px;
+}
+
+.modal-descricao {
+    color: #bebebe;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 28px;
+    cursor: pointer;
+}

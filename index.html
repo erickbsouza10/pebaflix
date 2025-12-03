@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quem está assistindo?</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Quem está assistindo?</h1>
+
+        <div class="profiles">
+
+            <div class="profile">
+                <img src="assets/perfil.png">
+                <span>ERICK</span>
+            </div>
+
+            <div class="profile">
+                <img src="assets/perfil.png">
+                <span>HIAN</span>
+            </div>
+
+            <div class="profile">
+                <img src="assets/perfil.png">
+                <span>Kids</span>
+            </div>
+
+            <div class="profile add" id="addProfile">
+                <span class="plus">+</span>
+                <span class="text-add">Adicionar perfil</span>
+            </div>
+
+        </div>
+
+        <button class="manage-btn">Gerenciar perfis</button>
+    </div>
+    <div class="main-content hidden">
+
+        <!-- NAV MENU -->
+        <header class="navbar">
+            <div class="left">
+                <h1 class="logo">PEBAFLIX</h1>
+                <nav>
+                    <a href="#">Início</a>
+                    <a href="#">Séries</a>
+                    <a href="#">Filmes</a>
+                    <a href="#">Minha Lista</a>
+                </nav>
+            </div>
+            <div class="right">
+                <span id="profileName"></span>
+                <img class="profile-icon" src="assets/perfil.png">
+            </div>
+
+        </header>
+
+        <!-- HERO BANNER -->
+        <section class="hero">
+            <div class="hero-content">
+                <h3>PEBA ORIGINAL</h3>
+                <h1>STRANGER THINGS</h1>
+
+                <div class="hero-buttons">
+                    <button class="btn-play">▶ Assistir</button>
+                    <button class="btn-info">ℹ Mais informações</button>
+                </div>
+            </div>
+
+            <div class="hero-overlay"></div>
+            <script src="js/categorias.js"></script>
+            <img class="hero-bg" src="assets/movie.png">
+        </section>
+
+
+
+        <!-- CARROSSEL EXEMPLO -->
+        <section class="carousel">
+
+
+
+        </section>
+
+
+    </div>
+
+    <div id="modalFilme" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">✖</span>
+
+            <img class="modal-capa" src="" alt="Filme">
+
+            <div class="modal-info">
+                <h2 class="modal-titulo"></h2>
+                <p class="modal-descricao"></p>
+
+                <div class="modal-buttons">
+                    <button class="btn-play">▶ Assistir</button>
+                    <button class="btn-info">➕ Minha Lista</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="js/perfis.js"></script>
+    <script src="js/categorias.js"></script>
+    <script src="js/script.js"></script>
+
+
+</body>
+
+</html>
