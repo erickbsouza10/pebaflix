@@ -161,6 +161,8 @@ h1 {
 .navbar nav {
     display: flex;
     align-items: center;
+    position: relative;
+    top: -20px;
 }
 
 .navbar nav a {
@@ -354,6 +356,52 @@ h1 {
     display: none;
 }
 
+.footer {
+    width: 100%;
+    padding: 40px 20px;
+    text-align: center;
+    color: #cbcbcb;
+    font-size: 14px;
+    margin-top: 80px;
+    box-sizing: border-box;
+    background-color: rgba(56, 56, 56, 0.339);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #b7b7b7;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+.footer-devs {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.dev-name {
+    color: #e50914;
+    font-weight: bold;
+}
+
+.footer-copy {
+    font-size: 12px;
+    color: #9b9b9b;
+}
+
 @keyframes subir {
     from {
         transform: translateY(30px);
@@ -399,6 +447,27 @@ h1 {
     line-height: 32px;
     border-radius: 50%;
     text-align: center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+/* Ajuste do tamanho do botão "Adicionar perfil" em telas grandes */
+
+@media (min-width: 1024px) {
+    .profile.add {
+        width: 120px;
+    }
+    .plus {
+        font-size: 48px;
+    }
+    .text-add {
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 768px) {
