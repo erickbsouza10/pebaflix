@@ -24,11 +24,6 @@ const catalogo = [{
                 titulo: "The Boys",
                 capa: "https://image.tmdb.org/t/p/w500/stTEycfG9928HYGEISBFaG1ngjM.jpg",
                 descricao: "Um grupo de vigilantes enfrenta super-heróis corruptos que abusam de seus poderes."
-            },
-            {
-                titulo: "Dark",
-                capa: "https://upload.wikimedia.org/wikipedia/pt/f/f6/Dark_%28s%C3%A9rie%29.jpg",
-                descricao: "Quatro famílias têm seus segredos revelados após o desaparecimento misterioso de crianças em uma cidade alemã."
             }
         ]
     },
