@@ -26,34 +26,28 @@
                 <span>HIAN</span>
             </div>
 
-
-
-
-
         </div>
 
         <button class="manage-btn">Gerenciar perfis</button>
     </div>
+
     <div class="main-content hidden">
 
-
-        <header class="navbar">
+        <header class="navbar" id="inicio">
             <div class="left">
                 <h1 class="logo">PEBAFLIX</h1>
                 <nav>
-                    <a href="#">Início</a>
-                    <a href="#">Séries</a>
-                    <a href="#">Filmes</a>
-                    <a href="#">Minha Lista</a>
+                    <a href="#inicio" id="linkInicio">Início</a>
+                    <a href="sobre.html">Sobre</a>
+                    <a href="#filmes">Filmes</a>
+                    <a href="#minhaLista" id="linkMinhaLista">Minha Lista</a>
                 </nav>
             </div>
             <div class="right">
                 <span id="profileName"></span>
                 <img class="profile-icon" src="assets/perfil.png">
             </div>
-
         </header>
-
 
         <section class="hero">
             <div class="hero-content">
@@ -67,25 +61,30 @@
             </div>
 
             <div class="hero-overlay"></div>
-
             <img class="hero-bg" src="assets/movie.png">
         </section>
 
+        <!-- Seção Séries -->
 
 
-        <section class="carousel">
-
-
-
+        <!-- Seção Filmes -->
+        <section id="filmes" class="carousel">
+            <h2>Filmes</h2>
+            <div class="carousel-row" id="filmesRow"></div>
         </section>
 
+        <!-- Seção Minha Lista -->
+        <section id="minhaLista" class="carousel hidden">
+            <h2>Minha Lista</h2>
+            <div class="carousel-row" id="listaRow"></div>
+        </section>
 
     </div>
 
+    <!-- Modal do Filme -->
     <div id="modalFilme" class="modal hidden">
         <div class="modal-content">
             <span class="close-modal">✖</span>
-
             <img class="modal-capa" src="" alt="Filme">
 
             <div class="modal-info">
@@ -94,14 +93,11 @@
 
                 <div class="modal-buttons">
                     <button class="btn-play">▶ Assistir</button>
-                    <button class="btn-info">➕ Minha Lista</button>
+                    <button class="btn-add-lista">➕ Minha Lista</button>
                 </div>
             </div>
         </div>
-
     </div>
-
-
 
     <footer class="footer">
         <div class="footer-links">
@@ -120,11 +116,9 @@
         <p class="footer-copy">© 2025 PEBAFLIX — Todos os direitos reservados.</p>
     </footer>
 
-
     <script src="js/perfis.js"></script>
     <script src="js/categorias.js"></script>
     <script src="js/script.js"></script>
-
 
 </body>
 

@@ -1,0 +1,173 @@
+/* =========================================
+   PÁGINA SOBRE - ESTILOS ESPECÍFICOS
+   ========================================= */
+
+
+/* Ajuste do topo (para não ficar atrás da navbar) */
+
+.main-content {
+    padding-top: 80px;
+    /* Ajuste se sua navbar for maior */
+}
+
+
+/* Banner Específico do Sobre */
+
+.hero-sobre {
+    height: 50vh;
+    /* Altura menor que a home */
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    /* Se quiser uma imagem fixa no fundo, descomente abaixo: */
+    /* background-attachment: fixed; */
+}
+
+
+/* Blocos de Conteúdo */
+
+.sobre-bloco {
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.sobre-texto {
+    font-size: 1.2rem;
+    color: #d3d3d3;
+    line-height: 1.8;
+}
+
+
+/* Títulos das Seções */
+
+.sobre-subtitulo {
+    color: #e50914;
+    /* Vermelho Netflix */
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+/* Lista de Funcionalidades */
+
+.sobre-lista {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 2.2;
+    color: #ddd;
+    list-style-type: none;
+    /* Remove bolinhas padrão */
+}
+
+.sobre-lista li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 5px 0;
+}
+
+.sobre-lista li::before {
+    content: "✔";
+    color: #e50914;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+
+/* --- ESTILO DA EQUIPE (CARDS) --- */
+
+.equipe-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.membro-card {
+    background-color: #181818;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 30px;
+    width: 280px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.membro-card:hover {
+    transform: translateY(-10px);
+    border-color: #e50914;
+}
+
+.membro-foto {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid transparent;
+    margin-bottom: 15px;
+    background-color: #333;
+    /* Cor de fundo se não houver foto */
+}
+
+.membro-card:hover .membro-foto {
+    border-color: #e50914;
+}
+
+.dev-name {
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+}
+
+.dev-role {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+    display: block;
+    margin-bottom: 15px;
+}
+
+
+/* Botões Sociais (Github/Linkedin) */
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-btn {
+    text-decoration: none;
+    color: #fff;
+    background-color: #333;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.social-btn:hover {
+    background-color: #e50914;
+}
+
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+    .sobre-texto {
+        font-size: 1rem;
+    }
+    .hero-sobre h1 {
+        font-size: 1.8rem;
+    }
+    .membro-card {
+        width: 100%;
+        max-width: 350px;
+    }
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - PebaFlix</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contato.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <h1 class="logo">PEBAFLIX</h1>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="contato.html" class="ativo">Contato</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+
+        <section class="form-section">
+            <h2>Entre em Contato</h2>
+            <p>Envie sua mensagem para nossa equipe!</p>
+
+            <form class="contato-form" onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso!')">
+
+                <label>Nome completo</label>
+                <input type="text" name="nome" placeholder="Seu nome" required>
+
+                <label>Email</label>
+                <input type="email" name="email" placeholder="email@exemplo.com" required>
+
+                <label>Assunto</label>
+                <select name="assunto" required>
+                    <option value="">Selecione...</option>
+                    <option value="duvidas">Dúvidas</option>
+                    <option value="elogios">Elogios</option>
+                    <option value="problemas">Reportar Problemas</option>
+                </select>
+
+                <label>Mensagem</label>
+                <textarea name="mensagem" rows="4" placeholder="Digite sua mensagem..." required></textarea>
+
+                <button type="submit" class="btn-enviar">Enviar</button>
+
+            </form>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">Termos</a>
+            <a href="#">Privacidade</a>
+            <a href="#">Ajuda</a>
+        </div>
+        <div class="footer-copy">
+            © 2025 — PebaFlix — Todos os direitos reservados
+        </div>
+    </footer>
+
+</body>
+
+</html>

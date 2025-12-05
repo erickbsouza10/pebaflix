@@ -1,9 +1,32 @@
+// ========================
+// ELEMENTOS DA TELA
+// ========================
 const profilesContainer = document.querySelector(".profiles");
 const containerPerfis = document.querySelector(".container");
 const mainContent = document.querySelector(".main-content");
 const nomePerfilTela = document.querySelector("#profileName");
 
+// Modal do Filme
+const modal = document.getElementById("modalFilme");
+const modalTitulo = document.querySelector(".modal-titulo");
+const modalCapa = document.querySelector(".modal-capa");
+const modalDescricao = document.querySelector(".modal-descricao");
+const fecharModal = document.querySelector(".close-modal");
+const btnAddLista = document.querySelector(".btn-add-lista");
 
+// Minha Lista
+const linkMinhaLista = document.getElementById("linkMinhaLista");
+const listaRow = document.getElementById("listaRow");
+const secaoLista = document.getElementById("minhaLista");
+
+// Banco local Minha Lista
+let minhaLista = JSON.parse(localStorage.getItem("minhaLista")) || [];
+let filmeAtual = null;
+
+
+// ========================
+// PERFIL
+// ========================
 function enterProfile(nome) {
     nomePerfilTela.textContent = nome;
 
@@ -14,20 +37,9 @@ function enterProfile(nome) {
         containerPerfis.classList.remove("fade-out");
 
         mainContent.classList.remove("hidden");
-        mainContent.classList.remove("fade-in");
-        void mainContent.offsetWidth;
-        mainContent.classList.add("fade-in");
-
-        if (!mainContent.dataset.loaded) {
-            renderCatalogo();
-            mainContent.dataset.loaded = true;
-        }
-
-        console.log(`Entrou no perfil: ${nome}`);
-
+        renderCatalogo();
     }, 600);
 }
-
 
 function renderPerfis() {
     profilesContainer.innerHTML = "";
@@ -36,29 +48,20 @@ function renderPerfis() {
         const card = document.createElement("div");
         card.classList.add("profile");
 
-        card.innerHTML = `
-            <img src="${perfil.img}">
-            <span>${perfil.nome}</span>
-        `;
-
+        card.innerHTML = `<img src="${perfil.img}"><span>${perfil.nome}</span>`;
         card.addEventListener("click", () => enterProfile(perfil.nome));
+
         profilesContainer.appendChild(card);
     });
-
-    const add = document.createElement("div");
-    add.classList.add("profile", "add");
-    add.innerHTML = `
-        <span class="plus">+</span>
-        <span class="text-add">Adicionar perfil</span>
-    `;
-    add.addEventListener("click", () => alert("Adicionar perfil será implementado"));
-
-    profilesContainer.appendChild(add);
 }
 
 
+// ========================
+// CATÁLOGO
+// ========================
 function renderCatalogo() {
-    console.log("Renderizando catálogo...");
+    if (mainContent.dataset.loaded) return;
+    mainContent.dataset.loaded = true;
 
     catalogo.forEach(secao => {
         const section = document.createElement("section");
@@ -73,10 +76,7 @@ function renderCatalogo() {
             const capa = document.createElement("img");
             capa.src = item.capa;
             capa.alt = item.titulo;
-            capa.title = item.titulo;
-
             capa.addEventListener("click", () => abrirModal(item));
-
             row.appendChild(capa);
         });
 
@@ -85,17 +85,19 @@ function renderCatalogo() {
     });
 }
 
-const modal = document.getElementById("modalFilme");
-const modalTitulo = document.querySelector(".modal-titulo");
-const modalCapa = document.querySelector(".modal-capa");
-const modalDescricao = document.querySelector(".modal-descricao");
-const fecharModal = document.querySelector(".close-modal");
 
-function abrirModal(item) {
-    modalCapa.src = item.capa;
-    modalTitulo.textContent = item.titulo;
-    modalDescricao.textContent = item.descricao || "Sem descrição disponível.";
+// ========================
+// MODAL FILME
+// ========================
+function abrirModal(filme) {
+    filmeAtual = filme;
+    modalTitulo.textContent = filme.titulo;
+    modalDescricao.textContent = filme.descricao;
+    modalCapa.src = filme.capa;
     modal.classList.remove("hidden");
+
+    const existe = minhaLista.some(f => f.id === filme.id);
+    btnAddLista.textContent = existe ? "✔ Adicionado" : "➕ Minha Lista";
 }
 
 function fecharModalFilme() {
@@ -103,11 +105,63 @@ function fecharModalFilme() {
 }
 
 fecharModal.addEventListener("click", fecharModalFilme);
-modal.addEventListener("click", (e) => {
-    if (e.target === modal) fecharModalFilme();
+
+
+// ========================
+// MINHA LISTA
+// ========================
+function salvarLista() {
+    localStorage.setItem("minhaLista", JSON.stringify(minhaLista));
+}
+
+function atualizarMinhaLista() {
+    listaRow.innerHTML = "";
+
+    if (minhaLista.length === 0) {
+        listaRow.innerHTML = `<p style="padding:20px;font-size:18px;">Sua lista está vazia 😢</p>`;
+        return;
+    }
+
+    minhaLista.forEach(filme => {
+        const capa = document.createElement("img");
+        capa.src = filme.capa;
+        capa.classList.add("carousel-item");
+        capa.addEventListener("click", () => abrirModal(filme));
+        listaRow.appendChild(capa);
+    });
+}
+
+btnAddLista.addEventListener("click", () => {
+    if (!filmeAtual) return;
+
+    const existe = minhaLista.some(f => f.id === filmeAtual.id);
+
+    if (existe) {
+        minhaLista = minhaLista.filter(f => f.id !== filmeAtual.id);
+        btnAddLista.textContent = "➕ Minha Lista";
+    } else {
+        minhaLista.push(filmeAtual);
+        btnAddLista.textContent = "✔ Adicionado";
+    }
+
+    salvarLista();
+    atualizarMinhaLista();
+});
+
+linkMinhaLista.addEventListener("click", () => {
+    document.querySelectorAll("section.carousel").forEach(sec => sec.classList.add("hidden"));
+    secaoLista.classList.remove("hidden");
+    atualizarMinhaLista();
+});
+let linkInicio = document.getElementById("linkInicio");
+
+linkInicio.addEventListener("click", () => {
+    document.querySelectorAll("section.carousel").forEach(sec => sec.classList.remove("hidden"));
+    secaoLista.classList.add("hidden");
 });
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    renderPerfis();
-});
+// ========================
+// INICIAR
+// ========================
+document.addEventListener("DOMContentLoaded", renderPerfis);
